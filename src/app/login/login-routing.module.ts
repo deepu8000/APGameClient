@@ -6,10 +6,10 @@ import { LoginUIComponent } from './screens/loginui/loginui.component';
 import { RegisterUIComponent } from './screens/registerui/registerui.component';
 
 const routes: Routes = [{
-  path: '', component: LoginComponent,
+  path: '', component: LoginComponent,pathMatch:'full',
   children: [
     { outlet:'login', path: '' , component: LoginUIComponent},
-    { outlet:'login', path: 'Register' , component: RegisterUIComponent}
+    { outlet:'login', path: 'register' , component: RegisterUIComponent}
   ]
 }];
 
