@@ -1,1 +1,18 @@
-<p>dashboard works!</p>
+
+<div class="tabArea">
+  <div class="tabHeader">
+      <div *ngFor="let tab of Tabs" class="tabHeaderContent">
+        <div class="clickableArea" (onclick)="tabClicked(tab);">
+          <div class="tabIcon">
+        </div>
+        <div class="tabName">
+        </div>
+        </div>
+        <div class="closeButton" (onclick)="tabCloseClicked(tab);">
+        </div>
+      </div>
+  </div>
+  <div class="tabBody">
+    <router-outlet></router-outlet>
+  </div>
+</div>
