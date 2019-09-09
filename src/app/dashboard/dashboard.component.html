@@ -1,18 +1,78 @@
-
+DashBoard Works!
 <div class="tabArea">
-  <div class="tabHeader">
-      <div *ngFor="let tab of Tabs" class="tabHeaderContent">
-        <div class="clickableArea" (onclick)="tabClicked(tab);">
-          <div class="tabIcon">
-        </div>
-        <div class="tabName">
-        </div>
-        </div>
-        <div class="closeButton" (onclick)="tabCloseClicked(tab);">
-        </div>
-      </div>
-  </div>
-  <div class="tabBody">
-    <router-outlet></router-outlet>
-  </div>
+	<div class="tabHeader">
+		<div>
+			<div *ngFor="let tab of Tabs; let i = index" class="tabHeaderContent">
+				<div [routerLink]="[tab.Route]" [ngStyle]="{ 'background-color': i == 1? '#5C093D' : '#E1D2DB' , 'color': i == 1? '#E1D2DB' : '#5C093D'}" class="clickableArea">
+					<div [ngClass]="'glyphicon glyphicon-'+tab.IconName+' tabIcon'">
+
+					</div>
+					<div class="tabName">
+						{{tab.Name}}
+					</div>
+					<div class="glyphicon glyphicon-remove closeButton">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tabBody">
+		<router-outlet></router-outlet>
+	</div>
 </div>
+
+<style>
+	.tabHeader {
+		min-height: 42px;
+		max-height: 42px;
+		background-color: #C3A5B8;
+		border-radius: 4px;
+		min-width: 100%;
+		max-width: 100%;
+		margin: 0px;
+		border-bottom: 5px solid #5C093D;
+	}
+
+	.tabHeaderContent {
+
+		display: -webkit-inline-box;
+		margin-top: -3px;
+	}
+
+	.clickableArea {
+		margin-top: 5px;
+		min-height: 35px;
+		max-height: 35px;
+		background-color: #E1D2DB;
+		min-width: 250px;
+		max-width: 250px;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 10px;
+		margin-left: 1px;
+    cursor : pointer;
+	}
+
+	.tabIcon {
+		top: 9px;
+		left: 8px;
+		font-size: 15px;
+		display: -webkit-inline-box;
+	}
+
+	.tabName {
+		position: relative;
+		top: 8px;
+		left: 15px;
+		display: -webkit-inline-box;
+	}
+
+	.closeButton {
+		position: relative;
+    top: 7px;
+    float: right;
+    font-size: 12px;
+    display: -webkit-inline-box;
+    right: 6px;
+    cursor : pointer;
+	}
+</style>
